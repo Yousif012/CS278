@@ -9,6 +9,7 @@ for i in range(1, n+1):
             functions.append([i,j,k])
 
 count = [0,0,0] # one-to-one, onto, bijection
+index = 1
 
 for func in functions:
     conditions = [False, False, False] # one-to-one, onto, bijection
@@ -19,7 +20,6 @@ for func in functions:
         count[0] += 1
 
     # Check if onto
-    i = 0
     nums = set()
     for num in func:
         nums.add(num)
@@ -32,11 +32,13 @@ for func in functions:
         conditions[2] = True
         count[2] += 1
 
-    print("f1(a)=" + str(func[0]) + "\t\tf1(b)=" + str(func[1]) + "\t\tf1(c)=" + str(func[2]))
+    print("f" + str(index) + "(a)=" + str(func[0]) + "\t\tf" + str(index) + "(b)=" + str(func[1]) + "\t\tf" + str(index) + "(c)=" + str(func[2]))
     oneToOne = "one-to-one," if conditions[0] else "not one-to-one,"
     onto = " onto," if conditions[1] else " not onto,"
     bijection = "a bijection." if conditions[2] else "not a bijection."
-    print("\tf1 is " + oneToOne + onto + " and " + bijection)
+    print("\tf" + str(index) + " is " + oneToOne + onto + " and " + bijection)
+
+    index+=1
 
 print("There are " + str(len(functions)) + " functions total.")
 print(str(count[0]) + " of them are one-to-one.")
